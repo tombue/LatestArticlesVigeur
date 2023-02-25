@@ -36,7 +36,7 @@ for link in links:
       #print(beskrivelse.text)
       #print(publicerings_dato)
       #print(skribent)
-      stories.append({'Dato':publicerings_dato, 'HL':rubrik, 'BS':beskrivelse.text, 'Skribent':skribent})
+      stories.append({'Dato':publicerings_dato, 'HL':rubrik, 'BS':beskrivelse.text, 'Skribent':skribent, 'Link':url})
       #stories.append()
 #Sætter dem i en dataframe og viser den
 st.title('Overblikket')
