@@ -1,6 +1,6 @@
 streamlit
 requests
-from bs4 import BeautifulSoup as bs
+bs4
 pandas
 sys
 dateparser
