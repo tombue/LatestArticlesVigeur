@@ -51,7 +51,7 @@ with st.spinner('Henter info ...'):
   dfStories['Dato'] = dfStories['Dato'].dt.date
 #st.success('Klar!')
 # Dataframe and Chart display section
-st.dataframe(dfStories) 
+st.dataframe(dfStories, use_container_width=True) 
 #
 #print(soup.prettify())
 #print(stories)
