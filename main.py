@@ -5,7 +5,9 @@ import pandas as pd
 import sys
 import dateparser
 st.title('Overblikket')
-with st.spinner('Undersøger detaljer ...'):
+st.subheader('De seneste uger på Vigeur')
+visKaffebrief = st.checkbox('Vis Kaffebrief')
+with st.spinner('Henter info ...'):
   #Først henter vi links til historier fra de seneste 4 oversigtssider
   page = 1
   links = []
@@ -15,7 +17,11 @@ with st.spinner('Undersøger detaljer ...'):
         html = response.content
         soup = bs(html, "html.parser")
         for a in soup.find_all("a", class_="article-teaser article-teaser--md article-teaser--image-left"):
+          if "kaffebrief" in a.get('href'):
+            if visKaffebrief:
               links.append(a.get('href'))
+          else:
+            links.append(a.get('href'))
         page = page + 1
   #Så looper så igennem dem og henter detaljer til stories 
   stories = []
@@ -43,9 +49,8 @@ with st.spinner('Undersøger detaljer ...'):
   #Sætter dem i en dataframe og viser den
   dfStories = pd.DataFrame(stories)
   dfStories['Dato'] = dfStories['Dato'].dt.date
-st.success('Klar!')
+#st.success('Klar!')
 # Dataframe and Chart display section
-st.subheader('De seneste uger på Vigeur')
 st.dataframe(dfStories) 
 #
 #print(soup.prettify())
