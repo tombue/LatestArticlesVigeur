@@ -11,7 +11,7 @@ with st.spinner('Henter info ...'):
   #Først henter vi links til historier fra de seneste 4 oversigtssider
   page = 1
   links = []
-  while page != 20:
+  while page != 15:
         url = f"https://vigeur.dk/soeg?searchTerm=&page={page}"
         response = requests.get(url)
         html = response.content
